@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Algoritmica · Proposta Tainá de Paula 2026</title>
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --surface-2: #1C1C1C;
+    --orange: #FF8C00;
+    --orange-soft: #FFA94D;
+    --white: #FFFFFF;
+    --muted: #A8A8A8;
+    --dim: #6B6B6B;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 140, 0, 0.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* TOP NAV */
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--orange);
+    letter-spacing: -0.02em;
+  }
+
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .logo-mark::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--orange);
+  }
+
+  .logo-mark::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--bg);
+  }
+
+  .nav-meta {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 120px 0 100px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .hero-tag {
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+    line-height: 0.98;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 .accent {
+    color: var(--orange);
+  }
+
+  .hero h1 .em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 22px;
+    color: var(--muted);
+    max-width: 720px;
+    line-height: 1.45;
+    font-weight: 300;
+    margin-bottom: 56px;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-meta-item .label {
+    color: var(--dim);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .hero-meta-item .value {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  /* BLOCK STRUCTURE */
+  .block {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .block-number {
+    color: var(--orange);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .block h2 {
+    font-size: 48px;
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    margin-bottom: 40px;
+    max-width: 800px;
+  }
+
+  .block h2 .em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--orange);
+  }
+
+  .block h3 {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-top: 56px;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .block h4 {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+    margin-top: 40px;
+    margin-bottom: 12px;
+  }
+
+  .block p {
+    font-size: 17px;
+    color: #D4D4D4;
+    margin-bottom: 18px;
+    max-width: 780px;
+  }
+
+  .block p.lead {
+    font-size: 20px;
+    color: var(--white);
+    line-height: 1.55;
+    margin-bottom: 32px;
+    max-width: 780px;
+  }
+
+  .block strong {
+    color: var(--orange);
+    font-weight: 500;
+  }
+
+  .block em {
+    color: var(--white);
+    font-style: italic;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 36px;
+    font-size: 14px;
+  }
+
+  th {
+    text-align: left;
+    padding: 14px 12px;
+    color: var(--orange);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-strong);
+    vertical-align: bottom;
+  }
+
+  td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    color: #D4D4D4;
+    vertical-align: top;
+  }
+
+  td.bold {
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  td.orange {
+    color: var(--orange);
+    font-weight: 500;
+  }
+
+  tr:hover td {
+    background: rgba(255, 140, 0, 0.03);
+  }
+
+  /* METRICS GRID */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 32px 0 48px;
+    border: 1px solid var(--border);
+  }
+
+  .metric {
+    background: var(--bg);
+    padding: 32px 24px;
+  }
+
+  .metric .num {
+    font-size: 48px;
+    color: var(--orange);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .metric .lbl {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* CLUSTERS */
+  .clusters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 32px 0;
+  }
+
+  .cluster {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 26px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .cluster-num {
+    color: var(--orange);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .cluster-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+
+  .cluster-meta {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  .cluster-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .tag {
+    background: rgba(255, 140, 0, 0.1);
+    color: var(--orange);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .tag.neutral {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+  }
+
+  /* NOTES */
+  .note {
+    background: rgba(255, 140, 0, 0.06);
+    border-left: 3px solid var(--orange);
+    padding: 20px 24px;
+    margin: 24px 0;
+    color: #D4D4D4;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .note strong {
+    color: var(--orange);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* PRICING */
+  .pricing-block {
+    background: var(--surface);
+    border: 1px solid var(--orange);
+    padding: 48px;
+    margin: 40px 0;
+  }
+
+  .pricing-table {
+    margin: 0;
+  }
+
+  .pricing-table td {
+    padding: 20px 12px;
+    font-size: 16px;
+  }
+
+  .pricing-table tr.total td {
+    color: var(--orange);
+    font-weight: 500;
+    font-size: 18px;
+    border-top: 2px solid var(--orange);
+    border-bottom: none;
+    padding-top: 24px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 32px 0;
+  }
+
+  .timeline-item {
+    background: var(--surface);
+    border-top: 3px solid var(--orange);
+    padding: 24px 20px;
+  }
+
+  .timeline-month {
+    color: var(--orange);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .timeline-desc {
+    color: #D4D4D4;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* SCOPE LIST */
+  .scope-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+  }
+
+  .scope-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    color: #D4D4D4;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .scope-list li:last-child { border-bottom: none; }
+
+  .scope-list li::before {
+    content: "›";
+    color: var(--orange);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .scope-list li strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 80px 0 60px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-logo {
+    color: var(--orange);
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .footer-meta {
+    color: var(--dim);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  /* DIVIDERS */
+  .divider-orange {
+    width: 60px;
+    height: 3px;
+    background: var(--orange);
+    margin: 32px 0 24px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .hero h1 { font-size: 44px; }
+    .hero-sub { font-size: 18px; }
+    .block h2 { font-size: 32px; }
+    .hero-meta { grid-template-columns: repeat(2, 1fr); }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .clusters { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; }
+    .container { padding: 0 20px; }
+    .pricing-block { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      algoritmica
+    </div>
+    <div class="nav-meta">Proposta · Junho 2026</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Algoritmica · Estratégia e Mídia Eleitoral</div>
+    <h1>
+      TAINÁ<br>
+      <span class="accent">DE PAULA</span>
+    </h1>
+    <p class="hero-sub">Proposta financeira de planejamento, gestão de mídia digital e inteligência de dados para a pré-campanha e campanha à Câmara dos Deputados pelo Rio de Janeiro, 2026.</p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Candidata</div>
+        <div class="value">Tainá de Paula</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Cargo</div>
+        <div class="value">Deputada Federal · RJ</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Partido</div>
+        <div class="value">PT</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Período</div>
+        <div class="value">Jun a Set 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 2 — LEITURA DO MOMENTO -->
+<section class="block">
+  <div class="container">
+    <div class="block-number">02 · Leitura do momento</div>
+    <h2>O que já foi <span class="em">construído</span></h2>
+
+    <p class="lead"><strong>O ponto de partida:</strong> Tainá é a mulher mais votada do Rio em 2024, com 49.986 votos, fruto de uma trajetória de quinze anos, voto por voto, bairro por bairro. Repetidos numa eleição federal, esses votos já a colocariam na zona de eleitos: 7 dos 46 deputados eleitos pelo RJ em 2022 fizeram menos. O desafio não é volume. É geografia e posição na federação.</p>
+
+    <p class="lead"><strong>O que medimos:</strong> oito meses de mídia digital (out/2025 a 20/mai/2026), com apenas R$ 20 mil investidos no Meta Ads, já entregaram mais de 4 milhões de contas alcançadas no estado e levaram o ThruPlay médio de 2,6% para 22,5%. Há método validado, território calibrado e inteligência acumulada.</p>
+
+    <p class="lead"><strong>O caminho:</strong> esta proposta cobre os honorários da Algoritmica para transformar esse aprendizado em escala eleitoral: análise, planejamento, gestão diária de mídia e inteligência de dados, da pré-campanha até o dia da eleição. Não se começa do zero. Começa-se de um método que já dobrou o ritmo de seguidores e prevê o criativo campeão antes de gastar.</p>
+  </div>
+</section>
+
+<!-- BLOCO 3 — ANÁLISE ESTRATÉGICA ELEITORAL -->
+<section class="block">
+  <div class="container">
+    <div class="block-number">03 · Análise Estratégica Eleitoral</div>
+    <h2>A vereadora mais votada que <span class="em">vira deputada federal</span></h2>
+
+    <h3>3.1 · A candidata</h3>
+    <p>Tainá de Paula, vereadora reeleita pelo PT e a mulher mais votada da Câmara do Rio em 2024. Foi Secretária Municipal de Meio Ambiente e Clima. A pauta ambiental não é bandeira de campanha, é entrega de gestão. Sua trajetória é de crescimento consistente: 8.653 votos em 2018 (suplente), 24.881 em 2020 (eleita) e 49.986 em 2024 (reeleita, +100%).</p>
+
+    <h3>3.2 · O desafio numérico</h3>
+    <div class="metrics">
+      <div class="metric">
+        <div class="num">49.986</div>
+        <div class="lbl">Votos de vereadora em 2024 (mulher mais votada do Rio)</div>
+      </div>
+      <div class="metric">
+        <div class="num">63%</div>
+        <div class="lbl">Do eleitorado federal está fora da capital</div>
+      </div>
+      <div class="metric">
+        <div class="num">39.325</div>
+        <div class="lbl">Votos do último eleito da federação do PT em 2022</div>
+      </div>
+      <div class="metric">
+        <div class="num">60-80K</div>
+        <div class="lbl">Votos que garantem a vaga com folga</div>
+      </div>
+    </div>
+
+    <h3>3.3 · O jogo real</h3>
+    <p>A leitura dos microdados do TSE 2022 aponta três verdades estratégicas que orientam toda a alocação de mídia:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Leitura</th>
+          <th>O que significa para a mídia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="bold">O perfil dela já ganhou antes</td><td>Ex-vereadores do Rio viraram deputados federais com forte voto na capital: dá pra ser carioca e eleger, desde que se apareça no estado todo.</td></tr>
+        <tr><td class="bold">A briga decisiva é interna</td><td>O último eleito da federação do PT em 2022 fez 39.325 votos; a 1ª suplente ficou a 1.003. O adversário a vencer é a fila do próprio partido.</td></tr>
+        <tr><td class="bold">A capilaridade é um ativo raro</td><td>O voto dela é espalhado e equilibrado entre Norte, Oeste e Sul. Candidatura que fala com públicos diversos viaja melhor para territórios novos.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>Síntese estratégica</strong>
+      A meta de mídia é abrir o estado para além da capital, defender a base já consolidada (Zona Sul, 25,8% dos votos), e furar a fila interna da federação. 60 a 80 mil votos garantem a vaga com folga; acima de 90 mil, Tainá vira puxadora e elege aliados.
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 4 — PLANEJAMENTO ESTRATÉGICO DE MÍDIA -->
+<section class="block">
+  <div class="container">
+    <div class="block-number">04 · Planejamento Estratégico de Mídia</div>
+    <h2>Território nomeado <span class="em">retém</span></h2>
+
+    <p>A virada de março/2026 provou a tese: ao sair de segmentação por interesse para <strong>território + pauta local</strong>, o ThruPlay saltou de 2,6% para 22,5%, com atenção real multiplicada por oito e um terço da verba. O CPM subiu (passamos a comprar atenção, não volume), mas o custo por ThruPlay caiu 5×. A fórmula está mapeada: território nomeado + entrega concreta + narrativa pessoal.</p>
+
+    <p>O conteúdo já ressoa com mais força fora da capital, onde chega como novidade. Meta Ads abre o interior; o Instagram orgânico sustenta a região metropolitana. E há duas frentes de expansão claras: o público jovem de 18 a 34 anos (hoje só 18,3% das impressões) via <strong>Kwai e TikTok</strong>, e o posicionamento Reels in-stream (3,6% das impressões, 32,9% de ThruPlay, com retenção 9× maior que o Feed).</p>
+
+    <h3>4.1 · Onde a mídia já está respondendo</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Território</th>
+          <th>ThruPlay</th>
+          <th>Leitura</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="bold">Cachoeiras de Macacu (interior)</td><td class="orange">23,4%</td><td>Pauta ambiental, conteúdo inédito ali</td></tr>
+        <tr><td class="bold">Méier e Região (capital)</td><td class="orange">21,9%</td><td>Base popular, +130% no voto</td></tr>
+        <tr><td class="bold">Zona Oeste (capital)</td><td>19,0%</td><td>Periferia forte, Bangu +207%</td></tr>
+        <tr><td class="bold">Macaé e arredores (interior)</td><td>18,6%</td><td>Mesa no NUPEM, pauta ambiental</td></tr>
+        <tr><td class="bold">São Gonçalo (metropolitana)</td><td>14,6%</td><td>Líder em visitas ao perfil (606)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4.2 · Frentes de mídia a operar</h3>
+    <div class="clusters">
+      <div class="cluster">
+        <div class="cluster-num">FRENTE 01</div>
+        <div class="cluster-title">Interior que abre o estado</div>
+        <div class="cluster-meta">Cachoeiras de Macacu, Macaé, Petrópolis, Teresópolis. Conteúdo chega como novidade e engaja mais que na capital. Próximos: Volta Redonda, Campos.</div>
+        <div class="cluster-tags">
+          <span class="tag">Meta Ads</span>
+          <span class="tag">Território + pauta</span>
+          <span class="tag neutral">Prioridade máxima</span>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-num">FRENTE 02</div>
+        <div class="cluster-title">Base metropolitana consolidada</div>
+        <div class="cluster-meta">Méier, Zona Oeste, São Gonçalo, Niterói e Maricá (com seguidores orgânicos sem mídia paga). Defender e adensar onde a candidatura já responde.</div>
+        <div class="cluster-tags">
+          <span class="tag">Instagram orgânico</span>
+          <span class="tag">Meta Ads</span>
+          <span class="tag neutral">Prioridade alta</span>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-num">FRENTE 03</div>
+        <div class="cluster-title">A lacuna jovem (18 a 34)</div>
+        <div class="cluster-meta">Apenas 18,3% das impressões e menor ThruPlay no Meta. Frente nova, aberta em separado, nos terrenos naturais do público.</div>
+        <div class="cluster-tags">
+          <span class="tag">Kwai</span>
+          <span class="tag">TikTok</span>
+          <span class="tag neutral">Frente de expansão</span>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-num">FRENTE 04</div>
+        <div class="cluster-title">Reels in-stream e narrativa pessoal</div>
+        <div class="cluster-meta">Posicionamento de altíssima retenção (32,9% de ThruPlay) e os criativos de narrativa pessoal + território, que lideram os virais orgânicos.</div>
+        <div class="cluster-tags">
+          <span class="tag">Reels</span>
+          <span class="tag">Stories</span>
+          <span class="tag neutral">Prioridade alta</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Importante</strong>
+      O investimento em MÍDIA (verba veiculada nas plataformas) é separado dos honorários da consultoria. Esta proposta cobre os honorários de análise, planejamento, gestão e inteligência de dados. A verba de mídia paga é orçamento adicional, recomendada hoje em três cenários de pré-campanha (R$ 7 mil/mês sustentação, R$ 14 mil/mês escala, R$ 20 mil/mês aceleração), a ser aprovada pela equipe da candidata e gerida em conta da campanha conforme exigências do TSE.
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 5 — DETALHAMENTO DO ESCOPO -->
+<section class="block">
+  <div class="container">
+    <div class="block-number">05 · Detalhamento do Escopo de Entregas</div>
+    <h2>O que está <span class="em">incluído</span></h2>
+
+    <ul class="scope-list">
+      <li><span><strong>Disponibilidade 24h/7d</strong> durante a campanha para subir conteúdos.</span></li>
+      <li><span><strong>Reuniões de alinhamento</strong> com a equipe de trabalho da agência e da candidata.</span></li>
+      <li><span><strong>Boletins semanais de performance</strong>, elaborados de acordo com as necessidades da coordenação de marketing.</span></li>
+      <li><span><strong>Reports mensais</strong> apresentados em reunião com toda a equipe que constitui o ecossistema de trabalho.</span></li>
+      <li><span><strong>Dashboard de acompanhamento em tempo real</strong>, com link público e layout leigo-friendly.</span></li>
+      <li><span><strong>Inteligência e direcionamento financeiro</strong> de todo o panorama orçamentário da campanha.</span></li>
+      <li><span><strong>Emissão de rótulos</strong> e demais elementos de destrave burocrático impostos pelas plataformas (Meta, Kwai).</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOCO 6 — CRONOGRAMA -->
+<section class="block">
+  <div class="container">
+    <div class="block-number">06 · Cronograma</div>
+    <h2>Da pré-campanha ao <span class="em">dia da eleição</span></h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-month">Junho 2026</div>
+        <div class="timeline-desc">Setup, calibragem de públicos e consolidação do método territorial. Sustentação do reconhecimento.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Julho 2026</div>
+        <div class="timeline-desc">Pré-campanha. Testes A/B em escala, abertura de novos territórios e frente jovem (Kwai/TikTok).</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Agosto 2026</div>
+        <div class="timeline-desc">Virada para a campanha oficial em 16/08. Entrada do fundo eleitoral, escala de operação e equipe ampliada.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Setembro 2026</div>
+        <div class="timeline-desc">Reta final. Frequência alta, geografia precisa, otimização diária e cadência intensa de criativos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-month">Outubro 2026</div>
+        <div class="timeline-desc">1º turno em 04/10. Operação de fechamento para prestação de contas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 7 — INVESTIMENTO -->
+<section class="block">
+  <div class="container">
+    <div class="block-number">07 · Investimento</div>
+    <h2>Honorários da <span class="em">equipe de mídia online</span></h2>
+
+    <p class="lead">Da pré-campanha ao dia da eleição, em quatro parcelas mensais. A escalada de junho/julho (R$ 8 mil) para agosto/setembro (R$ 32 mil) reflete a mudança de carga operacional: na pré-campanha, foco em sustentação, estruturação e testes; na campanha oficial, múltiplos territórios em paralelo, otimização diária, reports e boletins mais frequentes, disponibilidade 24/7 e equipe ampliada.</p>
+
+    <div class="pricing-block">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Vencimento</th>
+            <th style="text-align: right;">Valor</th>
+            <th>Escopo coberto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">10 de junho de 2026</td>
+            <td class="orange" style="text-align: right;">R$ 8.000,00</td>
+            <td>Setup, planejamento e gestão de mídia (mês 1, pré-campanha)</td>
+          </tr>
+          <tr>
+            <td class="bold">10 de julho de 2026</td>
+            <td class="orange" style="text-align: right;">R$ 8.000,00</td>
+            <td>Gestão, testes em escala e inteligência de dados (mês 2, pré-campanha)</td>
+          </tr>
+          <tr>
+            <td class="bold">10 de agosto de 2026</td>
+            <td class="orange" style="text-align: right;">R$ 32.000,00</td>
+            <td>Gestão integral, escala, reports e dashboard (mês 3, abertura da campanha oficial)</td>
+          </tr>
+          <tr>
+            <td class="bold">10 de setembro de 2026</td>
+            <td class="orange" style="text-align: right;">R$ 32.000,00</td>
+            <td>Gestão integral, reta final, otimização contínua e disponibilidade 24/7 (mês 4, campanha oficial)</td>
+          </tr>
+          <tr class="total">
+            <td>TOTAL</td>
+            <td style="text-align: right;">R$ 80.000,00</td>
+            <td>Pré-campanha + campanha oficial até a eleição</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Observação</strong>
+      Os valores acima referem-se exclusivamente aos honorários de consultoria, planejamento, gestão e inteligência de dados. A verba de mídia veiculada nas plataformas (Meta, Kwai, TikTok) é orçamento separado, aprovado e gerido conforme as exigências do TSE.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">algoritmica</div>
+    <div class="footer-meta">Estratégia e Mídia Eleitoral · Junho 2026<br>Proposta confidencial · Tainá de Paula · Deputada Federal RJ · PT</div>
+  </div>
+</footer>
+
+</body>
+</html>
